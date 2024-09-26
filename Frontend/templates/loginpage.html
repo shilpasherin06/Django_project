@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #eff0f4;
+        }
+
+        .container {
+            position: relative;
+            left: -80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container .drop {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            box-shadow: inset 20px 20px 20px rgba(0, 0, 0, 0.1),
+                        25px 35px 20px rgba(0, 0, 0, 0.05),25px 30px 30px rgba(0, 0, 0, 0.05),
+                        inset -20px -20px 25px rgba(255, 255, 255, 0.9);
+            transition: 0.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 62% 38% 24% 76% / 59% 60% 40% 41%;
+            background-color: #fff;
+        }
+
+         .container .drop:hover {
+            border-radius: 50%;
+        }
+        
+        .container .drop::before {
+            content: '';
+            position: absolute;
+            top: 50px;
+            left: 85px;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0.9;
+        } 
+        
+        .container .drop::after {
+            content: '';
+            position: absolute;
+            top: 85px;
+            left: 110px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: #fff;
+            opacity: 0.9;
+        } 
+
+         .container .drop .content {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 80px;
+            gap: 20px;
+        } 
+
+         .container .drop .content h1 {
+            position: relative;
+            color: red;
+            font-size: 1.5em;
+        } 
+
+        .container .drop .content form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            justify-content: center;
+            align-items: center;
+        } 
+
+        .container .drop .content form .input {
+            position: relative;
+            width: 225px;
+            box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.1),
+                        inset -2px -5px 10px rgba(255, 255, 255, 1),
+                        15px 15px 10px rgba(0, 0, 0, 0.05),
+                        15px 10px 15px rgba(0, 0, 0, 0.025);
+            border-radius: 25px;
+        } 
+
+        .container .drop .container form .input::before{
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 65px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px 15px;
+        } 
+ 
+        .container .drop .content form .input input{
+            border: none;
+            outline: none;
+            background: transparent;
+            width: 100%;
+            font-size: 1em;
+            padding: 10px 15px;
+
+        } 
+
+        .container .drop .container form .input input[type='submit'] {
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 1em;
+            letter-spacing: 0.1em;
+            font-weight: 600;
+        }
+        button{
+            border-radius: 50px ;
+            padding: 10px 20px;
+            border: 1px solid rgb(85, 85, 85);
+            cursor: pointer;
+            background-color: white;
+            color: rgb(85, 85, 85);
+            font-size: 1em;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            transition: 0.3s ease;
+            border: none;
+        }
+        button:hover{
+            background-color: rgb(85, 85, 85);
+            color: white;
+
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="drop">
+            <div class="content">
+                <h1 class="animate-hearBeat">Login </h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div class="input">
+                        <input type="text" name="username" placeholder="Username" required>
+                    </div>
+                    <div class="input">
+                        <input type="password" name="password" placeholder="Password" required>
+                    </div>
+                    {{ error }}
+                    <button type="submit">Login</button>
+                    <!-- <div class="input">
+                        <input type="submit" value="Login" href="#">
+                    </div> -->
+                </form>
+            </div>
+        </div>
+        <a href="#" class="btn">Forget Password</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    <link rel="stylesheet" href="{% static 'css/productlist.css'%}">
+    <link rel="stylesheet" href="{% static 'css/home.css'%}">
+    <style>   
+    table,th,td{
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 10px;
+    }
+    table{
+        margin: 70px;
+    }
+    form{
+        margin: 10px;
+        padding: 10px;
+    }
+
+    h1{
+        color: palevioletred;
+    }
+
+
+    </style>
+</head>
+
+<body>
+      {% block edex %}
+      {% endblock%}
+
+      {% include 'navbar.html' %}
+
+      {% block content %}
+      {% endblock %}
+
+<script src="{% static 'js/test.js' %}"></script>
+
+    
+</body>
+</html>

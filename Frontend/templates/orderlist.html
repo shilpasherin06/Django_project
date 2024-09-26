@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<center><h1>Order List Page</h1></center>
+<style>
+    table {
+    /* font-family: Arial, sans-serif; */
+    border: 1px solid #ddd;
+    width: 90%;
+    height: 40vh;
+    margin: 20px auto;
+    border-collapse: collapse;
+    text-align: center;
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+thead {
+    background-color: #f2f2f2;
+    color: #333;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+}
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    border: 2px solid black;
+}
+
+button {
+    padding: 5px 10px;
+    border: none;
+    color: black;
+    cursor: pointer;
+    background-color: palevioletred;
+}
+
+</style>
+
+<table>
+    
+    <tr>
+        <th>Product Referance</th>
+        <th>Customer Referance</th>
+        <th>Order Date</th>
+        <th>Quantity</th>
+        <th>Price</th>
+        <th>Gst</th>
+        <th>Final Price</th>
+        <th>Update</th>
+        <th>Delete</th>
+    </tr>
+    {% for i in ordlist %}
+    <tr>
+        <td>{{i.product_ref}}</td>
+        <td>{{i.customer_ref}}</td>
+        <td>{{i.order_date}}</td>
+        <td>{{i.quantity}}</td>
+        <td>{{i.price}}</td>
+        <td>{{i.gst}}</td>
+        <td>{{i.final_price}}</td>
+        <td>
+        <a href= "{% url 'ord_update' i.id %}">
+            <button>Update</button></a>
+</td>
+
+        <td>
+            <a href="{% url 'ord_delete' i.id %}">
+                <button>Delete</button>
+            </a>
+        </td>
+    </tr>
+    {%endfor%}
+
+</table>
+{% endblock %}
+
