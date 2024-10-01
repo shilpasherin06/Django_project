@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import *
 from .forms import *
 from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 #-----------------------------------------------------------------------
 class OrderAddView(View):
@@ -36,7 +37,8 @@ class OrderAddView(View):
         return redirect('/order/orderlist/')
     
 #-------------------------------------------------------------------
-class OrderListView(View):
+class OrderListView(LoginRequiredMixin,View):
+    login_url = '/'
     def get(self,request):
         data={"ordlist":Order.objects.all()}
         return render(request,'orderlist.html',data)

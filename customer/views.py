@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from .models import *
 from .forms import *
 from django.views import View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def indexpage(request):
@@ -25,7 +26,8 @@ class CustomerAddView(View):
             new_data.save()
             return redirect('/customer/customerlist/')
 #----------------------------------------------------------        
-class CustomerListView(View):
+class CustomerListView(LoginRequiredMixin,View):
+    login_url = '/'
     def get(self,request):
         data={"cuslist":Customer.objects.all()}
         return render(request,'customerlist.html',data)
